@@ -9,8 +9,10 @@ import Vue from 'vue';
 
 export default Vue.extend({
   name: 'greeting',
-  props: {
-    loginName: String,
-  },
+  computed: {
+    loginName() {
+      return this.$store.state.login;
+    }
+  }
 });
 </script>

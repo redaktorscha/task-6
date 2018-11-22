@@ -1,5 +1,4 @@
 import Vue from 'vue';
-import store from '../../store';
 import greeting from '@/components/greeting.vue';
 
 export default Vue.extend({
@@ -11,5 +10,5 @@ export default Vue.extend({
     loginName: String,
   },
   computed: {
-  },
+    },
 });

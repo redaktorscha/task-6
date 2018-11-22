@@ -1,25 +1,32 @@
 <template>
-    <div>
-        <form class="form" action="#" @submit.prevent="validateForm">
-            <div class='formfield'>
-                <span class='input__error' v-show="emptyMail">{{errorMsgs[0]}}</span>
-                <label for=''>Login Name</label>
-                <input type="email" class='input' placeholder="yourname@domain.com" name="email" v-model="email"
-                    autocomplete="off" required>
-            </div>
-            <div class='formfield'>
-                <span class='input__error' v-show="emptyPass">{{errorMsgs[1]}}</span>
-                <label for=''>Your Password</label>
-                <input type="password" placeholder="Enter Your Password" class='input' name="password" v-model="password"
-                    autocomplete="off" required />
-            </div>
-            <div class='formfield'>
-                <span class='input__error' v-show="notEqualMailPass">{{errorMsgs[2]}}</span>
-                <input type='submit' value='Sign In'>
-            </div>
+    <form class="form" action="/confirmauth" @submit.prevent="validateForm">
 
-        </form>
-    </div>
+
+        <div>
+            <span v-show="emptyLogin">{{ErrorMsgs[0]}}</span>
+        </div>
+        <div>
+            <label for="login">Login Name</label>
+            <input type="text" name="login" id="login" class='input' placeholder="fields should be equal" v-model="login"
+                autocomplete="off">
+        </div>
+
+        <div>
+            <span v-show="emptyPass">{{ErrorMsgs[1]}}</span></div>
+        <div><label for="password">Your Password</label>
+            <input type="text" placeholder="fields should be equal" class='input' name="password" v-model="password"
+                autocomplete="off">
+        </div>
+
+
+        <div>
+            <span v-show="notEqualLoginPass">{{ErrorMsgs[2]}}</span></div>
+        <div>
+            <input type="submit" value="Submit">
+        </div>
+
+    </form>
+
 </template>
 
 <script lang="ts">
@@ -29,46 +36,61 @@
 
     export default Vue.extend({
         name: 'loginform',
-        
-        data: {
-            
-                email: '',
+
+        data() {
+            return {
+                login: '',
                 password: '',
-           
+                emptyLogin: false,
+                emptyPass: false,
+                notEqualLoginPass: false,
+                ErrorMsgs: ['Please enter your login name',
+                    'Please enter your password',
+                    'Login name and password should be equal'
+                ],
+
+            }
         },
         methods: {
             validateForm() {
-                const errorMsgs = [
-                    'Please enter your login name',
-                    'Please enter your password',
-                    'Login name and password should be equal',
-                ];
-                let emptyMail = false;
-                let emptyPass = false;
-                let notEqualMailPass = false;
-
-                if (this.email !== '' && this.password !== '' && this.email === this.password) {
-                    this.email = '';
-                    this.password = '';
+                this.$store.state.login = this.login;
+                alert(this.$store.state.login);
+                if (this.login !== '' && this.password !== '' && this.login === this.password) {
                     this.$router.push({
-                        name: 'confirmAuth'
+                        name: 'confirmauth'
                     });
+                    alert('all ok');
                     return true;
                 }
 
-                if (this.email === '') {
-                    emptyMail = true;
-                    return false;
+                if (this.login === '') {
+                    alert('empty login');
+                    this.emptyLogin = true;
                 }
+
                 if (this.password === '') {
-                    emptyPass = true;
-                    return false;
+                    alert('empty pass');
+                    this.emptyPass = true;
                 }
-                if (this.email !== this.password) {
-                    notEqualMailPass = true;
-                    return false;
+
+                if (this.login !== this.password) {
+                    alert('not equal');
+                    this.notEqualLoginPass = true;
                 }
-            },
+
+            }
         },
-    });
+        computed: {
+             login: {
+                get () {
+                    alert(this.$store.state.login);
+                    return this.$store.state.login
+                },
+                set (newLogin:string) {
+                    this.$store.commit('updateLoginValue', newLogin);
+                }
+            }
+        }
+
+    })
 </script>
