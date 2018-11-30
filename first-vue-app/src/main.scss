@@ -1,20 +1,31 @@
-#app {
-    font-family: 'Avenir', Helvetica, Arial, sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-align: center;
-    color: #2c3e50;
+$cursor: pointer;
+$image_dir: '../assets/';
+$font_bold: 700;
+$font_norm: 400;
+$font_family1: "Calligraffitti";
+$font_family2: "Raleway";
+$display: flex;
+$box_sizing: border-box;
+
+@mixin size($w, $h) {
+    width: $w;
+    height: $h;
+  }
+
+@mixin bradius($br) {
+    border-radius: $br;
 }
 
-#nav {
-    padding: 30px;
-}
 
-#nav a {
-    font-weight: bold;
-    color: #2c3e50;
-}
 
-#nav a.router-link-exact-active {
-    color: #42b983;
+.wrapper {
+    margin: 0 auto;
+    padding: 50px;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    background-image: url($image_dir + 'marshmallow.jpg');
+    background-size: 100%;
+    background-repeat: repeat-y;
+    background-position: center;
 }

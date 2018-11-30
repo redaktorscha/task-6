@@ -81,12 +81,12 @@
             }
         },
         computed: {
-             login: {
-                get () {
+            login: {
+                get() {
                     alert(this.$store.state.login);
                     return this.$store.state.login
                 },
-                set (newLogin:string) {
+                set(newLogin: string) {
                     this.$store.commit('updateLoginValue', newLogin);
                 }
             }
