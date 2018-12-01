@@ -1,0 +1,62 @@
+@import 'variables', 'colors', 'buttons';
+
+.header {
+    @include bradius(6px);
+    @include size(1000px, 200px);
+    @include padding(20px, 60px);
+    font-family: $font_family1;
+    display: $display;
+    box-sizing: $box_sizing;
+    flex-flow: column nowrap;
+    align-items: $align;
+    justify-content: center;
+    border: 2px solid $silver;
+    background-color: $silver;
+    opacity: .8;
+
+    .header__inner {
+        @include size(95%, 70%);
+        @include bradius(6px);
+        @include padding(20px, 60px);
+        display: $display;
+        box-sizing: $box_sizing;
+        flex-flow: row nowrap;
+        align-items: $align;
+        justify-content: center;
+        background: url($image_dir + 'back1.gif');
+        position: relative;
+        box-shadow: 0px 0px 27px 0px $palemagenta inset;
+
+        .navbuttons {
+            @include width(200px);
+            display: $display;
+            position: absolute;            
+            left: 80px;
+            align-items: $align;
+            flex-flow: column nowrap;
+        }
+
+        .header__greeting {
+            position: absolute;
+            left: 300px;
+            color: $palemagenta;
+            font-weight: 900;
+            font-size: 36px;
+        }
+
+        .header__logo {
+            position: absolute;
+            left: 720px;
+            opacity: .8;
+
+            & img {
+                @include width(200px);
+                @include bradius(50%);
+                background: url($image_dir + 'circle_logo.jpg');
+                background-repeat: no-repeat;
+                background-size: cover;
+                background-position: center;
+            }
+        }
+    }
+}

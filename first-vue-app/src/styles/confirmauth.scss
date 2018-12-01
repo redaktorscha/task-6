@@ -1,0 +1,27 @@
+@import 'colors', 'variables';
+
+.welcome {
+    @include size(600px, 400px);
+    @include bradius(6px);
+    @include padding(60px, 60px);
+    margin-top: 50px; 
+    display: $display;
+    flex-flow: column wrap;
+    box-sizing: $box_sizing;
+    background-color: $white;
+    background-image: url($image_dir + 'macarons.jpg');
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: bottom;    
+    align-items: $align;
+    justify-content: flex-start;
+    box-shadow: 0px 0px 27px 0px $raspberry inset;
+
+    .welcome__text {
+        @include width(100%);
+        font-family: $font_family2;
+        color:$candypink;
+        font-size: 26px;
+        font-weight: bold;
+    }
+}

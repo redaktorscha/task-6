@@ -1,30 +1,14 @@
 <template>
-    <form class="form" action="/confirmauth" @submit.prevent="validateForm">
-
-
-        <div>
-            <span v-show="emptyLogin">{{ErrorMsgs[0]}}</span>
-        </div>
-        <div>
-            <label for="login">Login Name</label>
-            <input type="text" name="login" id="login" class='input' placeholder="fields should be equal" v-model="login"
-                autocomplete="off">
-        </div>
-
-        <div>
-            <span v-show="emptyPass">{{ErrorMsgs[1]}}</span></div>
-        <div><label for="password">Your Password</label>
-            <input type="text" placeholder="fields should be equal" class='input' name="password" v-model="password"
-                autocomplete="off">
-        </div>
-
-
-        <div>
-            <span v-show="notEqualLoginPass">{{ErrorMsgs[2]}}</span></div>
-        <div>
-            <input type="submit" value="Submit">
-        </div>
-
+    <form class="register" action="/confirmauth" @submit.prevent="validateForm">
+        <span class='errorMsg' v-show="emptyLogin">{{ErrorMsgs[0]}}</span>
+        <div class='input_box'><label for="login" class='input__label'>Login Name</label>
+            <input class='input' type="text" name="login" id="login" placeholder="fields should be equal" autocomplete="off" v-model="login"></div>
+        <span class='errorMsg' v-show="emptyPass">{{ErrorMsgs[1]}}</span>
+        <div class='input_box'><label for="password" class='input__label'>Password</label>
+            <input class='input' type="text" placeholder="fields should be equal" name="password" v-model="password"
+                autocomplete="off"></div>
+        <span class='errorMsg' v-show="notEqualLoginPass">{{ErrorMsgs[2]}}</span>
+        <button class='btn btn__submit btn__pink' type="submit"><span class='btn__submit__text'>Submit</span></button>
     </form>
 
 </template>
@@ -46,51 +30,44 @@
                 notEqualLoginPass: false,
                 ErrorMsgs: ['Please enter your login name',
                     'Please enter your password',
-                    'Login name and password should be equal'
+                    'Login name and password should be equal',
                 ],
 
-            }
+            };
         },
         methods: {
-            validateForm() {
+            validateForm(): void {
                 this.$store.state.login = this.login;
-                alert(this.$store.state.login);
                 if (this.login !== '' && this.password !== '' && this.login === this.password) {
                     this.$router.push({
-                        name: 'confirmauth'
+                        name: 'confirmauth',
                     });
-                    alert('all ok');
-                    return true;
                 }
 
                 if (this.login === '') {
-                    alert('empty login');
                     this.emptyLogin = true;
                 }
 
                 if (this.password === '') {
-                    alert('empty pass');
                     this.emptyPass = true;
                 }
 
                 if (this.login !== this.password) {
-                    alert('not equal');
                     this.notEqualLoginPass = true;
                 }
 
-            }
+            },
         },
         computed: {
             login: {
-                get() {
-                    alert(this.$store.state.login);
-                    return this.$store.state.login
+                get(): string {
+                    return this.$store.state.login;
                 },
-                set(newLogin: string) {
+                set(newLogin: string): void {
                     this.$store.commit('updateLoginValue', newLogin);
-                }
-            }
-        }
+                },
+            },
+        },
 
-    })
+    });
 </script>

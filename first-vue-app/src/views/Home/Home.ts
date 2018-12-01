@@ -1,9 +1,11 @@
 import Vue from 'vue';
-import HelloWorld from '@/components/HelloWorld.vue'; // @ is an alias to /src
+import header from '@/components/header.vue';
+import navigation from '@/components/navigation.vue';
 
 export default Vue.extend({
   name: 'home',
   components: {
-    HelloWorld,
+    header,
+    navigation,
   },
 });

@@ -1,0 +1,12 @@
+@import 'colors', 'variables', 'buttons', 'header';
+
+.wrapper {
+    margin: 0 auto;
+   
+    display: $display;
+    flex-flow: column nowrap;
+    align-items: $align;
+    background-image: url($image_dir + 'marshmallow.jpg');
+    background-size: cover;
+    background-position: center;    
+}

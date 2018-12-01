@@ -1,31 +1,32 @@
 $cursor: pointer;
 $image_dir: '../assets/';
-$font_bold: 700;
-$font_norm: 400;
 $font_family1: "Calligraffitti";
 $font_family2: "Raleway";
 $display: flex;
 $box_sizing: border-box;
+$align: center;
+
+
+@mixin width($w) {
+    width: $w;
+}
 
 @mixin size($w, $h) {
     width: $w;
     height: $h;
-  }
+}
 
 @mixin bradius($br) {
     border-radius: $br;
 }
 
+@mixin padding($padver, $padhor) {
+    padding: $padver $padhor;
+}
 
-
-.wrapper {
-    margin: 0 auto;
-    padding: 50px;
-    display: flex;
-    flex-flow: column nowrap;
-    align-items: center;
-    background-image: url($image_dir + 'marshmallow.jpg');
-    background-size: 100%;
-    background-repeat: repeat-y;
+%btn {
+    display: block;
+    background-size: 50px 50px;
+    background-repeat: no-repeat;
     background-position: center;
 }

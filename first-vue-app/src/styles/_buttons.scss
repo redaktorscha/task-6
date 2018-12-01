@@ -1,0 +1,118 @@
+@import 'variables', 'colors';
+
+.btn {
+    @include size(120px, 60px);
+    @include bradius(50px);
+    display: block;
+    position: relative;
+    font-size: 22px;
+    font-weight: bold;
+    color: $white;
+    margin: 10px;
+    text-shadow:
+        0 2px 4px $black;
+    border: none;
+    border-top: 2px solid $oldlace;
+    box-shadow:
+        inset 0 -5px 20px $black2,
+        inset 0 5px 20px $greylight,
+        -8px 8px 5px $black3,
+        5px 18px 10px $black4;
+    cursor: $cursor;
+    outline: none;
+    transition: width 0.2s;
+
+    &:before {
+        @include bradius(15px);
+        display: block;
+        content: '';
+        position: absolute;
+        left: 20px;
+        right: 20px;
+        top: 2px;
+        height: 30px;
+        background:
+            linear-gradient($grey2, $grey3);
+        opacity: 0.6;
+    }
+
+    &:hover {
+        padding-left: 20px;
+        padding-right: 20px;
+        outline: none;
+        text-decoration: none;
+    }
+
+    .btn__text {
+        display: none;
+        position: relative;
+        left: 30px;
+        top: 5px;
+        white-space: nowrap;
+        font-family: $font_family1;
+        font-weight: 900;
+        font-size: 26px;
+    }
+
+    &:hover .btn__text {
+        display: block;
+    }
+
+    &:active {
+        transform: translatey(2px);
+    }
+}
+
+.btn__blue {
+    @extend %btn;
+    background-color: $candyblue;
+    background-image: url($image_dir + 'home.png');
+
+
+    &:hover {
+        background: $candyblue;
+    }
+}
+
+.btn__green {
+    @extend %btn;
+    background-color: $candygreen;
+    background-image: url($image_dir + 'login.png');
+
+
+    &:hover {
+        background: #21e342;
+    }
+
+}
+
+.btn__pink {
+    background-color: $candypink;
+    background-image: url($image_dir + 'submit.png');
+    font-family: $font_family1;
+
+    &:hover {
+        background: $candypink;
+    }
+}
+
+.btn__submit {
+    @extend %btn;
+
+    &:hover {
+        padding-left: 80px;
+        padding-right: 80px;
+    }
+
+    .btn__submit__text {
+        display: none;
+        position: relative;
+        left: -30px;
+        white-space: nowrap;
+        font-size: 24px;
+    }
+
+    &:hover .btn__submit__text {
+        display: block;
+    }
+}

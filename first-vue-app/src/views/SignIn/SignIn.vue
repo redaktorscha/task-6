@@ -1,6 +1,6 @@
 <template>
-  <div class="about">
-    <h1>Please Sign In</h1>
+  <div class="wrapper__register">
+    <h1 class='register__title'>Please Log In</h1>
      <loginform/>
   </div>
 </template>
@@ -8,4 +8,4 @@
 
 <script lang="ts" src="./SignIn.ts">
 </script>
-<style lang='scss' src='./SignIn.scss'></style>
+<style lang='scss' src='@/styles/signin.scss'></style>

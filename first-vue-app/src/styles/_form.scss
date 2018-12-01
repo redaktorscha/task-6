@@ -1,0 +1,49 @@
+@import 'buttons', 'colors', 'variables';
+
+.errorMsg {
+    @include width(80%); 
+    display: $display;
+    justify-content: center;
+    box-shadow: 0px 0px 2px 3px $candypink;
+    font-weight: bold;
+    font-size: 16px;
+    background-color: $white;
+    margin-bottom: 10px;
+    border-radius: 3px;
+    color: $grey;
+}
+
+.input_box {
+    @include size(80%, 30px);
+    display: $display;
+    justify-content: space-between;
+    margin-bottom: 25px;
+
+    .input__label {
+        color: $grey;
+        font-weight: bold;
+    }
+
+    .input {
+        @include bradius(3px);
+        @include size(300px, 30px);
+        box-sizing: $box_sizing;
+        font-family: $font_family2;
+        font-weight: bold;
+        text-align: left;
+        font-size: 16px;
+        padding: 0 10px 0 15px;
+        color: $grey;
+        border: none;
+
+        & ::placeholder {
+            color: $grey;
+        }
+
+        & :focus::placeholder {
+            transition: 0.3 ease;
+        }
+
+    }
+
+}

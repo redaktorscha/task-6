@@ -1,0 +1,41 @@
+@import 'buttons', 'colors', 'variables', 'form';
+
+
+
+
+.wrapper__register {
+    @include width(100%);
+    display: $display;
+    flex-flow: column nowrap;
+    align-items: $align;
+    margin-top: 20px;
+    
+    
+    .register__title {
+        display: $display;
+        font-family: $font_family2;
+        font-size: 30px;
+        color: $grey;
+        font-weight: bold;
+    }
+
+    .register {
+        @include padding(20px, 20px);
+        @include bradius(6px);
+        @include width(600px);
+        display: $display;
+        box-sizing: $box_sizing;   
+        border: 5px dashed $silver;
+        background-color: $pink;
+        opacity: .8;
+        font-family: $font_family2;
+        font-weight: normal;
+        font-size: 20px;     
+        display: $display;
+        flex-flow: column nowrap;
+        align-items: $align;
+        justify-content: space-between;
+        opacity: 1;                
+    }
+
+}
